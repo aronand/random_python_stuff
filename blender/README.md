@@ -38,5 +38,6 @@ for vert, normal in vertex_data.items():
 
 Cube
 ![Cube](assets/cube.png)
+
 Cone
 ![Cone, top view](assets/cone_top_view.png)
