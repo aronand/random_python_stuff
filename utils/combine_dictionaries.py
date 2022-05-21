@@ -1,13 +1,14 @@
 from collections import defaultdict
 from typing import Callable
+from typing import Any
 
 
-def combine_dictionaries(*args) -> defaultdict[list]:
+def combine_dictionaries(*args) -> defaultdict[Any, list]:
     """Combines n amount of dictionaries into one, which holds all the values in a list.
     
      * Supports dicts and defaultdicts
     """
-    new_dict = defaultdict(list)
+    new_dict: defaultdict[Any, list] = defaultdict(list)
 
     dict_types: list[Callable] = [dict, defaultdict]
 
