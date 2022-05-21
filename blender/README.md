@@ -13,28 +13,7 @@ The vertex normal is calculated by using the normals of connected faces.
 
 ## Example: Use vertex normals to paint vertex colors
 
-The normal can be passed to utils.normal_to_rgb(), which in turn can be used in conjunction with vertex painting:
-```python
-obj = bpy.context.object
-vertex_data = utils.get_vertex_normals(obj)
-mesh = obj.data
-mesh.use_paint_mask_vertex = True
-bpy.ops.object.mode_set(mode="EDIT")
-bpy.ops.mesh.select_mode(type="VERT")
-bpy.ops.mesh.select_all(action="DESELECT")
-
-for vert, normal in vertex_data.items():
-    bpy.ops.object.mode_set(mode="OBJECT")
-    mesh.vertices[vert].select = True
-    color = utils.normal_to_rgb(normal)  # Note that Blender actually wants the RGB values to be between 0.0 and 1.0, so this snippet doesn't quite work out of the box :(
-    bpy.ops.object.mode_set(mode="VERTEX_PAINT")
-    bpy.data.brushes["Draw"].color = color
-    bpy.ops.paint.vertex_color_set()
-    bpy.ops.object.mode_set(mode="OBJECT")
-    mesh.vertices[vert].select = False
-```
-
-### Results
+The normal can be passed to utils.normal_to_rgb(), which in turn can be used in conjunction with vertex painting.
 
 Cube:
 
