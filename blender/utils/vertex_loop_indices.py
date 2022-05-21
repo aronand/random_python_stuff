@@ -2,7 +2,7 @@ import bpy
 from collections import defaultdict
 
 
-def get_vertex_loop_indices(obj: bpy.types.Object) -> dict[int, list[int]]:
+def get_vertex_loop_indices(obj: bpy.types.Object) -> defaultdict[int, list[int]]:
     """
     Maps face loop indices to vertices and returns them as a dict.
     
@@ -11,7 +11,7 @@ def get_vertex_loop_indices(obj: bpy.types.Object) -> dict[int, list[int]]:
     if obj.type != "MESH":
         raise TypeError
     
-    vertex_data: dict[int, list[int]] = defaultdict(list)
+    vertex_data: defaultdict[int, list[int]] = defaultdict(list)
 
     for face in obj.data.polygons:
         for vert, loop_index in zip(face.vertices, face.loop_indices):

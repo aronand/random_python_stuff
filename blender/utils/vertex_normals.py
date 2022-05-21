@@ -3,7 +3,7 @@ from mathutils import Vector
 from collections import defaultdict
 
 
-def get_vertex_normals(obj: bpy.types.Object) -> dict[int, Vector]:
+def get_vertex_normals(obj: bpy.types.Object) -> defaultdict[int, Vector]:
     """
     Calculates vertex normals from connected faces and returns them as a dict.
     
@@ -12,7 +12,7 @@ def get_vertex_normals(obj: bpy.types.Object) -> dict[int, Vector]:
     if obj.type != "MESH":
         raise TypeError
     
-    vertex_data: dict[int, Vector] = defaultdict(Vector)
+    vertex_data: defaultdict[int, Vector] = defaultdict(Vector)
     
     for face in obj.data.polygons:
         for vert in face.vertices:
