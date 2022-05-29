@@ -1,4 +1,9 @@
 def exceptionhandler(exc: Exception, raise_exc: Exception = RuntimeError):
+    """
+    Wraps a try...except block within a decorator. 
+    
+    By default raises RuntimeError if exception caught.
+    """
     def decorator(func):
         def wrapper(*args, **kwargs):
             try:
@@ -9,7 +14,7 @@ def exceptionhandler(exc: Exception, raise_exc: Exception = RuntimeError):
     return decorator
 
 
-@exceptionhandler(ValueError, RuntimeError)
+@exceptionhandler(ValueError)
 def main(val: bool):
     if val: raise ValueError
     print("Got here")
